@@ -51,6 +51,18 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 
 }).addTo(map);
 
+//add Regions layer
+$.getJSON('opendata/regions.geojson',function(Regions){
+  L.geoJson( Regions,{
+		style: function (feature){
+			return {weight: 2, color: "#08184D", fillOpacity: 0.6};
+		},
+		onEachFeature: function(feature, layer){
+			layer.bindPopup("<strong><a href='" + feature.properties.url + "' target='_blank'>" + feature.properties.name + "</a></strong>");
+			return layer;
+		}
+	}).addTo(map);
+});
 
 //add Provinces layer
 $.getJSON('opendata/provterr_final.geojson',function(Provinces){
@@ -68,20 +80,6 @@ $.getJSON('opendata/provterr_final.geojson',function(Provinces){
 		}
 	}).addTo(map);
 });
-
-//add Regions layer
-$.getJSON('opendata/regions.geojson',function(Regions){
-  L.geoJson( Regions,{
-		style: function (feature){
-			return {weight: 2, color: "#08184D", fillOpacity: 0.6};
-		},
-		onEachFeature: function(feature, layer){
-			layer.bindPopup("<strong><a href='" + feature.properties.url + "' target='_blank'>" + feature.properties.name + "</a></strong>");
-			return layer;
-		}
-	}).addTo(map);
-});
-
 
 //add Cities layer - CLUSTERING
 //clustering code from https://github.com/Leaflet/Leaflet.markercluster/tree/master/dist
