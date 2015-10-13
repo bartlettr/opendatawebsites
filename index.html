@@ -5,13 +5,8 @@
 
 <title>Canadian Open Data Websites</title>
 
-<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
-
-<link rel="stylesheet" href="styles.css" />
-
-<script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
-
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Load Esri Leaflet from CDN -->
+<script src="//cdn.jsdelivr.net/leaflet.esri/1.0.0/esri-leaflet.js"></script>
 
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
 <link rel="stylesheet" href="styles.css" />
@@ -26,17 +21,19 @@
 
 </head>
 
-
+<style>
+  body {
+    font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;
+  }
+</style>
 <body>
 
   <h2>Open Data Websites in Canada</h2>
   <p>Municipal, regional, and provincial open data websites in Canada. Does not include <a href="http://open.canada.ca/en">Government of Canada open data website</a>.</p>
   <p>Last updated October 10, 2015. Details on <a href="https://github.com/bartlettr/opendatawebsites">Github</a>.
 
-
 <div id="map"></div>
 
-<script src="code_opendata.js"></script>
 
 <script>
 
@@ -53,6 +50,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 	id: 'mapbox.streets'
 
 }).addTo(map);
+
 
 //add Provinces layer
 $.getJSON('opendata/provterr_final.geojson',function(Provinces){
@@ -108,6 +106,7 @@ $.getJSON('opendata/cities.geojson',function(data){
 });
 
 </script>
+
 
 </body>
 
