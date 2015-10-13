@@ -34,7 +34,6 @@
 
 <div id="map"></div>
 
-
 <script>
 
 var map = L.map('map').setView([61.0, -101.84], 4);
@@ -51,19 +50,6 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 
 }).addTo(map);
 
-//add Regions layer
-$.getJSON('opendata/regions.geojson',function(Regions){
-  L.geoJson( Regions,{
-		style: function (feature){
-			return {weight: 2, color: "#08184D", fillOpacity: 0.6};
-		},
-		onEachFeature: function(feature, layer){
-			layer.bindPopup("<strong><a href='" + feature.properties.url + "' target='_blank'>" + feature.properties.name + "</a></strong>");
-			return layer;
-		}
-	}).addTo(map);
-});
-
 //add Provinces layer
 $.getJSON('opendata/provterr_final.geojson',function(Provinces){
   L.geoJson( Provinces,{
@@ -76,7 +62,20 @@ $.getJSON('opendata/provterr_final.geojson',function(Provinces){
 		},
 		onEachFeature: function(feature, layer){
 			layer.bindPopup("<strong><a href='" + feature.properties.url + "' target='_blank'>" + feature.properties.name + "</a></strong><br></br>" + feature.properties.notes);
-			return layer;
+      return layer;
+		}
+	}).addTo(map);
+});
+
+//add Regions layer
+$.getJSON('opendata/regions.geojson',function(Regions){
+  L.geoJson( Regions,{
+		style: function (feature){
+			return {weight: 2, color: "#08184D", fillOpacity: 0.6};
+		},
+		onEachFeature: function(feature, layer){
+      layer.bindPopup("<strong><a href='" + feature.properties.url + "' target='_blank'>" + feature.properties.name + "</a></strong>");
+      return layer;
 		}
 	}).addTo(map);
 });
@@ -104,7 +103,6 @@ $.getJSON('opendata/cities.geojson',function(data){
 });
 
 </script>
-
 
 </body>
 
