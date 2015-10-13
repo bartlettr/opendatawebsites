@@ -5,6 +5,9 @@
 
 <title>Canadian Open Data Websites</title>
 
+<!-- Load Esri Leaflet from CDN -->
+<script src="//cdn.jsdelivr.net/leaflet.esri/1.0.0/esri-leaflet.js"></script>
+
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
 <link rel="stylesheet" href="styles.css" />
 
@@ -18,7 +21,11 @@
 
 </head>
 
-
+<style>
+  body {
+    font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;
+  }
+</style>
 <body>
 
   <h2>Open Data Websites in Canada</h2>
@@ -26,7 +33,6 @@
   <p>Last updated October 10, 2015. Details on <a href="https://github.com/bartlettr/opendatawebsites">Github</a>.
 
 <div id="map"></div>
-
 
 <script>
 
@@ -56,7 +62,7 @@ $.getJSON('opendata/provterr_final.geojson',function(Provinces){
 		},
 		onEachFeature: function(feature, layer){
 			layer.bindPopup("<strong><a href='" + feature.properties.url + "' target='_blank'>" + feature.properties.name + "</a></strong><br></br>" + feature.properties.notes);
-			return layer;
+      return layer;
 		}
 	}).addTo(map);
 });
@@ -68,12 +74,11 @@ $.getJSON('opendata/regions.geojson',function(Regions){
 			return {weight: 2, color: "#08184D", fillOpacity: 0.6};
 		},
 		onEachFeature: function(feature, layer){
-			layer.bindPopup("<strong><a href='" + feature.properties.url + "' target='_blank'>" + feature.properties.name + "</a></strong>");
-			return layer;
+      layer.bindPopup("<strong><a href='" + feature.properties.url + "' target='_blank'>" + feature.properties.name + "</a></strong>");
+      return layer;
 		}
 	}).addTo(map);
 });
-
 
 //add Cities layer - CLUSTERING
 //clustering code from https://github.com/Leaflet/Leaflet.markercluster/tree/master/dist
@@ -98,7 +103,6 @@ $.getJSON('opendata/cities.geojson',function(data){
 });
 
 </script>
-
 
 </body>
 
