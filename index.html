@@ -72,8 +72,8 @@ $.getJSON('opendata/regions.geojson',function(Regions){
 		onEachFeature: function(feature, layer){
       layer.bindPopup("<strong><a href='" + feature.properties.url + "' target='_blank'>" + feature.properties.name + "</a></strong>");
       return layer;
-		}
-	}).addTo(map);
+		},
+	}).addTo(map).bringToFront();
 });
 
 //add Cities layer - CLUSTERING
