@@ -66,8 +66,7 @@ $.getJSON('opendata/regions.geojson',function(Regions){
 			return {weight: 2, color: "#08184D", fillOpacity: 0.6};
 		},
 		onEachFeature: function(feature, layer){
-      		layer.bindPopup("<strong><a href='" + feature.properties.url + "' target='_blank'>" + feature.properties.name + "</a></strong>");
-    			layer.bindPopup(popupContent, { minWidth: 150 });
+      layer.bindPopup("<strong><a href='" + feature.properties.url + "' target='_blank'>" + feature.properties.name + "</a></strong>");
       return layer;
 		},
 	}).addTo(map).bringToFront();
