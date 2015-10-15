@@ -9,7 +9,6 @@
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="http://cdn.jsdelivr.net/leaflet.esri/1.0.0/esri-leaflet.js"></script>
 
 <link rel="stylesheet" href="MarkerCluster/MarkerCluster.css" />
 <link rel="stylesheet" href="MarkerCluster/MarkerCluster.Default.css" />
@@ -35,10 +34,7 @@
 
 var map = L.map('map').setView([61.0, -101.84], 4);
 
-L.esri.basemapLayer("ShadedRelief").addTo(map);
-L.esri.basemapLayer('ShadedReliefLabels').addTo(map);
-
-/*L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYmFydGxldHRyIiwiYSI6ImJZaWVsOHMifQ.Phd2UxnLvo6F2oZdmyzRlQ', {
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYmFydGxldHRyIiwiYSI6ImJZaWVsOHMifQ.Phd2UxnLvo6F2oZdmyzRlQ', {
 
 	maxZoom: 18,
 
@@ -48,27 +44,23 @@ L.esri.basemapLayer('ShadedReliefLabels').addTo(map);
 
 	id: 'mapbox.streets'
 
-}).addTo(map);*/
+}).addTo(map);
 
 //add Provinces layer
-$.getJSON('opendata/provterr.geojson',function(Provinces){
+$.getJSON('opendata/provterr_final.geojson',function(Provinces){
   L.geoJson( Provinces,{
 		//style code below from http://leafletjs.com/examples/geojson.html
 		style: function(feature){
-			return {weight: 1, color: "#000066"};
+			switch (feature.properties.opendata) {
+				case 'Y': return {weight: 1, color: "#000066"};
+				default: return {weight: 1, color: "#ffffff"};
+			}
 		},
 		onEachFeature: function(feature, layer){
-      var popupContent =
-    				"<strong><a href='" + feature.properties.url +
-    				"' target='_blank'>" + feature.properties.name +
-    				"</a></strong>";
-    			if (feature.properties.notes) {
-    				popupContent += "<br>" + feature.properties.notes + "</br>";
-    			}
-    			layer.bindPopup(popupContent, { minWidth: 150 });
+			layer.bindPopup("<strong><a href='" + feature.properties.url + "' target='_blank'>" + feature.properties.name + "</a></strong><br></br>" + feature.properties.notes);
       return layer;
 		}
-	}).addTo(map).bringToBack();
+	}).addTo(map);
 });
 
 //add Regions layer
@@ -88,6 +80,7 @@ $.getJSON('opendata/regions.geojson',function(Regions){
 //clustering code from https://github.com/Leaflet/Leaflet.markercluster/tree/master/dist
 //clustering code snippet from http://bl.ocks.org/awoodruff/5de3553bb1f1b0c5f90d
 $.getJSON('opendata/cities.geojson',function(data){
+	//probably should remove this variable - have var cityIcon starting line 15
 	var cityIcon = L.icon({
 		iconUrl: 'opendata/sprite.png', //sprite from https://github.com/calvinmetcalf/leaflet.sprite/blob/master/sprites.png
 		iconSize: [30,45],
@@ -104,8 +97,6 @@ $.getJSON('opendata/cities.geojson',function(data){
 	clusters.addLayer(cities);
 	map.addLayer(clusters);
 });
-
-L.control.scale().addTo(map);
 
 </script>
 
