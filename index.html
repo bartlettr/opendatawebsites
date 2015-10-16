@@ -35,12 +35,12 @@
 <script>
 
 var map = L.map('map').setView([61.0, -101.84], 4);
-/*
+
 L.esri.basemapLayer('ShadedRelief').addTo(map);
 L.esri.basemapLayer('ShadedReliefLabels').addTo(map);
-*/
+
 //add Provinces layer
-$.getJSON('opendata/provterr_noNUMB.geojson',function(Provinces){
+$.getJSON('opendata/provterr_final.geojson',function(Provinces){
   L.geoJson( Provinces,{
 		style: function(feature){
 			return {weight: 1, color: "#000066"};
