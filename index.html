@@ -27,8 +27,8 @@
 <body>
 
   <h2>Open Data Websites in Canada</h2>
-  <p>Municipal, regional, and provincial open data websites in Canada. Does not include <a href="http://open.canada.ca/en">Government of Canada open data website</a>.</p>
-  <p>Last updated October 10, 2015. Details on <a href="https://github.com/bartlettr/opendatawebsites">Github</a>.
+  <p>Municipal, regional, provincial, and territorial open data websites in Canada. Does not include <a href="http://open.canada.ca/en">Government of Canada open data website</a>.</p>
+  <p>Last updated October 9, 2015. Details on <a href="https://github.com/bartlettr/opendatawebsites">Github</a>.
 
 <div id="map"></div>
 
@@ -92,6 +92,8 @@ $.getJSON('opendata/cities.geojson',function(data){
 	clusters.addLayer(cities);
 	map.addLayer(clusters);
 });
+
+L.control.scale().addTo(map);
 
 </script>
 
