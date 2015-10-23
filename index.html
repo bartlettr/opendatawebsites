@@ -40,7 +40,7 @@ L.esri.basemapLayer('ShadedRelief').addTo(map);
 L.esri.basemapLayer('ShadedReliefLabels').addTo(map);
 
 //add Provinces layer
-$.getJSON('opendata/provterr_final.geojson',function(Provinces){
+$.getJSON('opendata/canada.geojson',function(Provinces){
   L.geoJson( Provinces,{
 		style: function(feature){
       /*switch (feature.properties.opendata) {
