@@ -43,10 +43,12 @@ L.esri.basemapLayer('ShadedReliefLabels').addTo(map);
 $.getJSON('opendata/canada.geojson',function(Provinces){
   L.geoJson( Provinces,{
 		style: function(feature){
-      /*switch (feature.properties.opendata) {
-    				case 'Y': weight: 1, color: "#000066";
-            default : weight: 1, color: "#ffffff";*/
-			return {weight: 1, color: "#000066"};
+			var bgcolor
+				switch (feature.properties.opendata) {
+    					case 'Y': bgcolor = "#000066"; break
+            				default : bgcolor = "#ffffff";
+				}
+			return {weight: 1, color: bgcolor};
 		},
 		onEachFeature: function(feature, layer){
 		      var popupContent =
