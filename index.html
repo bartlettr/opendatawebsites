@@ -58,7 +58,7 @@ $.getJSON('opendata/canada_nonumb.geojson',function(Provinces){
     			if (feature.properties.notes) {
     				popupContent += "<br></br>" + feature.properties.notes;
     			}
-    			layer.bindPopup(popupContent, { minWidth: 150 });
+    			layer.bindPopup(popupContent);
       return layer;
 		}
 	}).addTo(map).bringToBack();
