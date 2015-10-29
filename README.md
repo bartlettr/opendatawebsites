@@ -14,3 +14,5 @@ Regional shapefiles downloaded from respective region's open data website (as li
 Cities geocoded in <a href="https://cartodb.com/">CartoDB</a>.
 
 Basemap is <a href="https://esri.github.io/esri-leaflet/api-reference/layers/basemap-layer.html">Esri Shaded Relief with labels</a>.
+
+Coded using <a href="http://leafletjs.com/">Leaflet</a> with the <a href="https://github.com/Leaflet/Leaflet.markercluster">MarkerCluster plugin</a>.
