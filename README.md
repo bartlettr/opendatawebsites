@@ -1,7 +1,7 @@
 # Open Data Websites in Canada
 <a href="http://bartlettr.github.io/opendatawebsites/">Map of provincial, regional, and municipal open data websites in Canada</a>.
 
-Last updated March 7, 2016, from <a href="https://library.carleton.ca/find/gis/geospatial-data/open-data-repositories">Open Data Repositories - Canada</a> (Carleton University Library).
+Last updated July 4, 2017, from <a href="https://library.carleton.ca/find/gis/geospatial-data/open-data-repositories">Open Data Repositories - Canada</a> (Carleton University Library).
 
 Please report updates/dead links to <a href="mailto:rebecca.bartlett@carleton.ca">rebecca.bartlett@carleton.ca</a>.
 
